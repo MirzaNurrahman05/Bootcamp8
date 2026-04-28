@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookshelf App - Premium Edition</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables for High-End Look */
+    :root {
+      --primary: #4F46E5;
+      --primary-hover: #4338CA;
+      --secondary: #10B981;
+      --secondary-hover: #059669;
+      --danger: #EF4444;
+      --danger-hover: #DC2626;
+      --warning: #F59E0B;
+      --warning-hover: #D97706;
+      --bg-color: #F3F4F6;
+      --surface: #FFFFFF;
+      --text-main: #111827;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --radius: 12px;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 3rem;
+    }
+
+    /* Header Styling */
+    header {
+      background: var(--surface);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.025em;
+    }
+
+    /* Main Layout */
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 992px) {
+      main {
+        grid-template-columns: 350px 1fr;
+        align-items: start;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 6rem;
+      }
+    }
+
+    /* Section & Card Styling */
+    section {
+      background: var(--surface);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 1.5rem;
+    }
+
+    section h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--bg-color);
+      color: var(--text-main);
+    }
+
+    /* Form Styling */
+    form div {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      background-color: #F9FAFB;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      background-color: var(--surface);
+    }
+
+    /* Checkbox Styling */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .checkbox-group label {
+      margin-bottom: 0;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      width: 1.25rem;
+      height: 1.25rem;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* Button Styling */
+    button {
+      width: 100%;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    #bookFormSubmit {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #bookFormSubmit:hover {
+      background-color: var(--primary-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    #searchSubmit {
+      background-color: var(--text-main);
+      color: white;
+      margin-top: 1rem;
+    }
+
+    #searchSubmit:hover {
+      background-color: #000;
+    }
+
+    /* Book List Grid */
+    .book-list-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Individual Book Item Card */
+    .book-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .book-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+
+    .book-item h3 {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .book-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .book-item .actions {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* Action Buttons within Book Card */
+    .book-item button {
+      width: auto;
+      flex: 1;
+      padding: 0.5rem;
+      font-size: 0.8rem;
+      border-radius: 6px;
+    }
+
+    .btn-toggle {
+      background-color: var(--secondary);
+      color: white;
+      flex-basis: 100%;
+      /* Makes this button take full width */
+      margin-bottom: 0.25rem;
+    }
+
+    .btn-toggle:hover {
+      background-color: var(--secondary-hover);
+    }
+
+    .btn-delete {
+      background-color: white;
+      color: var(--danger);
+      border: 1px solid var(--danger);
+    }
+
+    .btn-delete:hover {
+      background-color: var(--danger);
+      color: white;
+    }
+
+    .btn-edit {
+      background-color: white;
+      color: var(--warning);
+      border: 1px solid var(--warning);
+    }
+
+    .btn-edit:hover {
+      background-color: var(--warning);
+      color: white;
+    }
+
+    /* Toast Notification */
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      padding: 16px;
+      position: fixed;
+      z-index: 50;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      box-shadow: var(--shadow-lg);
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s, bottom 0.3s;
+    }
+
+    #toast.show {
+      visibility: visible;
+      opacity: 1;
+      bottom: 50px;
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      grid-column: 1 / -1;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Bookshelf App</h1>
+  </header>
+
+  <main>
+    <!-- Kiri: Area Form (Sticky di Desktop) -->
+    <div class="sidebar">
+      <section>
+        <h2 id="formTitle">Tambah Buku Baru</h2>
+        <form id="bookForm" data-testid="bookForm">
+          <div>
+            <label for="bookFormTitle">Judul Buku</label>
+            <input id="bookFormTitle" type="text" required data-testid="bookFormTitleInput"
+              placeholder="Contoh: Laskar Pelangi" />
+          </div>
+          <div>
+            <label for="bookFormAuthor">Penulis</label>
+            <input id="bookFormAuthor" type="text" required data-testid="bookFormAuthorInput"
+              placeholder="Contoh: Andrea Hirata" />
+          </div>
+          <div>
+            <label for="bookFormYear">Tahun Rilis</label>
+            <input id="bookFormYear" type="number" required data-testid="bookFormYearInput"
+              placeholder="Contoh: 2005" />
+          </div>
+          <div class="checkbox-group">
+            <input id="bookFormIsComplete" type="checkbox" data-testid="bookFormIsCompleteCheckbox" />
+            <label for="bookFormIsComplete">Buku sudah selesai dibaca</label>
+          </div>
+          <button id="bookFormSubmit" type="submit" data-testid="bookFormSubmitButton">
+            Masukkan Buku ke rak <span>Belum selesai dibaca</span>
+          </button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Cari Buku</h2>
+        <form id="searchBook" data-testid="searchBookForm">
+          <div>
+            <label for="searchBookTitle">Judul Buku</label>
+            <input id="searchBookTitle" type="text" data-testid="searchBookFormTitleInput"
+              placeholder="Ketik judul buku di sini..." />
+          </div>
+          <button id="searchSubmit" type="submit" data-testid="searchBookFormSubmitButton">
+            Cari Buku
+          </button>
+        </form>
+      </section>
+    </div>
+
+    <!-- Kanan: Area Daftar Buku -->
+    <div class="content">
+      <section>
+        <h2>Belum Selesai Dibaca</h2>
+        <div id="incompleteBookList" class="book-list-container" data-testid="incompleteBookList">
+          <!-- Data buku akan dirender di sini via JS -->
+        </div>
+      </section>
+
+      <section>
+        <h2>Selesai Dibaca</h2>
+        <div id="completeBookList" class="book-list-container" data-testid="completeBookList">
+          <!-- Data buku akan dirender di sini via JS -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Element untuk Toast Notification -->
+  <div id="toast">Notifikasi</div>
+
+  <script>
+    /**
+     * LOGIC UTAMA BOOKSHELF APP
+     * Ditulis dengan Vanilla JavaScript murni menyesuaikan kriteria submission.
+     */
+
+    const STORAGE_KEY = 'BOOKSHELF_APP_DATA';
+    let books = [];
+    let editingBookId = null;
+
+    // Element Referensi
+    const bookForm = document.getElementById('bookForm');
+    const inputTitle = document.getElementById('bookFormTitle');
+    const inputAuthor = document.getElementById('bookFormAuthor');
+    const inputYear = document.getElementById('bookFormYear');
+    const inputIsComplete = document.getElementById('bookFormIsComplete');
+    const submitBtnSpan = document.querySelector('#bookFormSubmit span');
+    const formTitle = document.getElementById('formTitle');
+    const bookFormSubmit = document.getElementById('bookFormSubmit');
+
+    const searchForm = document.getElementById('searchBook');
+    const searchInput = document.getElementById('searchBookTitle');
+
+    const incompleteBookList = document.getElementById('incompleteBookList');
+    const completeBookList = document.getElementById('completeBookList');
+
+    // Cek dukungan localStorage
+    function isStorageExist() {
+      if (typeof (Storage) === undefined) {
+        showToast('Browser kamu tidak mendukung local storage');
+        return false;
+      }
+      return true;
+    }
+
+    // Load data dari storage
+    function loadDataFromStorage() {
+      if (isStorageExist()) {
+        const serializedData = localStorage.getItem(STORAGE_KEY);
+        let data = JSON.parse(serializedData);
+        if (data !== null) books = data;
+      }
+      renderBooks();
+    }
+
+    // Save data ke storage
+    function saveData() {
+      if (isStorageExist()) {
+        const parsed = JSON.stringify(books);
+        localStorage.setItem(STORAGE_KEY, parsed);
+      }
+    }
+
+    // Buat Objek Buku
+    function generateBookObject(id, title, author, year, isComplete) {
+      return { id, title, author, year: Number(year), isComplete }; // Memastikan year bertipe number
+    }
+
+    // Update Teks Tombol Submit berdasarkan Checkbox
+    inputIsComplete.addEventListener('change', function () {
+      if (editingBookId) return; // Jika mode edit, teks tidak perlu berubah berdasarkan checkbox otomatis
+      submitBtnSpan.innerText = this.checked ? 'Selesai dibaca' : 'Belum selesai dibaca';
+    });
+
+    // Menambah atau Mengubah Buku
+    bookForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const title = inputTitle.value;
+      const author = inputAuthor.value;
+      const year = inputYear.value;
+      const isComplete = inputIsComplete.checked;
+
+      if (editingBookId) {
+        // Mode Edit
+        const bookIndex = books.findIndex(book => book.id === editingBookId);
+        if (bookIndex !== -1) {
+          books[bookIndex] = generateBookObject(editingBookId, title, author, year, isComplete);
+          showToast('Data buku berhasil diperbarui!');
+        }
+        // Reset Mode
+        editingBookId = null;
+        formTitle.innerText = 'Tambah Buku Baru';
+        bookFormSubmit.innerHTML = 'Masukkan Buku ke rak <span>' + (isComplete ? 'Selesai dibaca' : 'Belum selesai dibaca') + '</span>';
+      } else {
+        // Mode Tambah Baru
+        const id = +new Date(); // Generate ID unik berupa number
+        const newBook = generateBookObject(id, title, author, year, isComplete);
+        books.push(newBook);
+        showToast('Buku baru berhasil ditambahkan!');
+      }
+
+      saveData();
+      renderBooks();
+      bookForm.reset();
+      // Reset text checkbox state
+      submitBtnSpan.innerText = 'Belum selesai dibaca';
+    });
+
+    // Mencari Buku
+    searchForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const query = searchInput.value.toLowerCase();
+      renderBooks(query);
+    });
+
+    searchInput.addEventListener('keyup', function (e) {
+      const query = e.target.value.toLowerCase();
+      renderBooks(query);
+    });
+
+    // Toggle Status Selesai Dibaca
+    function toggleComplete(id) {
+      const bookTarget = books.find(book => book.id === id);
+      if (bookTarget) {
+        bookTarget.isComplete = !bookTarget.isComplete;
+        saveData();
+        renderBooks(searchInput.value.toLowerCase());
+        showToast(bookTarget.isComplete ? 'Dipindah ke rak Selesai' : 'Dipindah ke rak Belum Selesai');
+      }
+    }
+
+    // Menghapus Buku
+    function deleteBook(id) {
+      const bookIndex = books.findIndex(book => book.id === id);
+      if (bookIndex !== -1) {
+        books.splice(bookIndex, 1);
+        saveData();
+        renderBooks(searchInput.value.toLowerCase());
+        showToast('Buku berhasil dihapus!');
+      }
+    }
+
+    // Mengedit Buku
+    function editBook(id) {
+      const bookTarget = books.find(book => book.id === id);
+      if (bookTarget) {
+        editingBookId = bookTarget.id;
+        inputTitle.value = bookTarget.title;
+        inputAuthor.value = bookTarget.author;
+        inputYear.value = bookTarget.year;
+        inputIsComplete.checked = bookTarget.isComplete;
+
+        formTitle.innerText = 'Edit Data Buku';
+        bookFormSubmit.innerText = 'Simpan Perubahan';
+
+        // Scroll smoothly ke atas form
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Render Data ke HTML (Mematuhi Aturan data-testid yang ketat)
+    function renderBooks(searchQuery = '') {
+      incompleteBookList.innerHTML = '';
+      completeBookList.innerHTML = '';
+
+      // Filter berdasarkan pencarian
+      const filteredBooks = books.filter(book => book.title.toLowerCase().includes(searchQuery));
+
+      if (filteredBooks.length === 0) {
+        if (books.length === 0) {
+          incompleteBookList.innerHTML = '<p class="empty-state">Belum ada buku di rak ini.</p>';
+          completeBookList.innerHTML = '<p class="empty-state">Belum ada buku di rak ini.</p>';
+        } else {
+          incompleteBookList.innerHTML = '<p class="empty-state">Buku tidak ditemukan.</p>';
+          completeBookList.innerHTML = '<p class="empty-state">Buku tidak ditemukan.</p>';
+        }
+        return;
+      }
+
+      let hasIncomplete = false;
+      let hasComplete = false;
+
+      for (const book of filteredBooks) {
+        // Membuat kontainer utama
+        const bookItem = document.createElement('div');
+        bookItem.classList.add('book-item');
+        bookItem.setAttribute('data-bookid', book.id);
+        bookItem.setAttribute('data-testid', 'bookItem');
+
+        // Membuat Title
+        const title = document.createElement('h3');
+        title.setAttribute('data-testid', 'bookItemTitle');
+        title.innerText = book.title;
+
+        // Membuat Author
+        const author = document.createElement('p');
+        author.setAttribute('data-testid', 'bookItemAuthor');
+        author.innerText = `Penulis: ${book.author}`;
+
+        // Membuat Year
+        const year = document.createElement('p');
+        year.setAttribute('data-testid', 'bookItemYear');
+        year.innerText = `Tahun: ${book.year}`;
+
+        // Membuat container actions
+        const actions = document.createElement('div');
+        actions.classList.add('actions');
+
+        // Button Toggle Complete
+        const btnToggle = document.createElement('button');
+        btnToggle.setAttribute('data-testid', 'bookItemIsCompleteButton');
+        btnToggle.classList.add('btn-toggle');
+        btnToggle.innerText = book.isComplete ? 'Belum selesai dibaca' : 'Selesai dibaca';
+        btnToggle.addEventListener('click', () => toggleComplete(book.id));
+
+        // Button Hapus
+        const btnDelete = document.createElement('button');
+        btnDelete.setAttribute('data-testid', 'bookItemDeleteButton');
+        btnDelete.classList.add('btn-delete');
+        btnDelete.innerText = 'Hapus Buku';
+        btnDelete.addEventListener('click', () => deleteBook(book.id));
+
+        // Button Edit
+        const btnEdit = document.createElement('button');
+        btnEdit.setAttribute('data-testid', 'bookItemEditButton');
+        btnEdit.classList.add('btn-edit');
+        btnEdit.innerText = 'Edit Buku';
+        btnEdit.addEventListener('click', () => editBook(book.id));
+
+        // Append buttons ke actions container
+        actions.append(btnToggle, btnDelete, btnEdit);
+
+        // Append semua ke bookItem
+        bookItem.append(title, author, year, actions);
+
+        // Masukkan ke rak yang sesuai
+        if (book.isComplete) {
+          completeBookList.append(bookItem);
+          hasComplete = true;
+        } else {
+          incompleteBookList.append(bookItem);
+          hasIncomplete = true;
+        }
+      }
+
+      // Handle Empty State jika salah satu rak kosong setelah difilter
+      if (!hasIncomplete) incompleteBookList.innerHTML = '<p class="empty-state">Tidak ada buku di rak ini.</p>';
+      if (!hasComplete) completeBookList.innerHTML = '<p class="empty-state">Tidak ada buku di rak ini.</p>';
+    }
+
+    // Fungsi Custom Toast UI (Pengganti alert)
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.innerText = message;
+      toast.className = "show";
+      setTimeout(function () {
+        toast.className = toast.className.replace("show", "");
+      }, 3000);
+    }
+
+    // Inisialisasi Aplikasi Saat DOM Siap
+    document.addEventListener('DOMContentLoaded', () => {
+      loadDataFromStorage();
+    });
+
+  </script>
+</body>
+
+</html>
