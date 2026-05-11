@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-red: #DB4444;
+  --secondary-white: #F5F5F5;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.active-category {
+  background-color: var(--primary-red);
+  color: white !important;
+}
+
+.dot-active {
+    background-color: var(--primary-red);
+}
+
+/* Custom animations or transitions if needed */
+.group:hover .group-hover\:stroke-white {
+    stroke: white;
+}

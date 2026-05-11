@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mirza Nurrahman — Pixel Dev Portfolio</title>
+  <meta name="description" content="Personal portfolio Mirza Nurrahman, front-end developer dengan tema pixel art retro." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="scanlines">
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar" class="fixed top-0 inset-x-0 z-50 bg-transparent border-b-4 border-[#2a2a52]">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="pixel-font text-[0.7rem] text-cyan-400 tracking-wider">{Portofolio Mirza}</a>
+    <ul class="hidden md:flex gap-8 text-sm font-medium">
+      <li><a href="#home" class="nav-link text-slate-300 hover:text-cyan-400">Home</a></li>
+      <li><a href="#about" class="nav-link text-slate-300 hover:text-cyan-400">About</a></li>
+      <li><a href="#skills" class="nav-link text-slate-300 hover:text-cyan-400">Skills</a></li>
+      <li><a href="#projects" class="nav-link text-slate-300 hover:text-cyan-400">Projects</a></li>
+      <li><a href="#journey" class="nav-link text-slate-300 hover:text-cyan-400">Journey</a></li>
+      <li><a href="#contact" class="nav-link text-slate-300 hover:text-cyan-400">Contact</a></li>
+    </ul>
+    <button id="menu-toggle" class="md:hidden text-slate-300 text-2xl cursor-pointer">☰</button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden bg-[#161638]/95 shadow-lg shadow-purple-950/30 backdrop-blur-sm px-6 pb-4">
+    <a href="#home" class="block py-2 text-slate-300 hover:text-cyan-400">Home</a>
+    <a href="#about" class="block py-2 text-slate-300 hover:text-cyan-400">About</a>
+    <a href="#skills" class="block py-2 text-slate-300 hover:text-cyan-400">Skills</a>
+    <a href="#projects" class="block py-2 text-slate-300 hover:text-cyan-400">Projects</a>
+    <a href="#journey" class="block py-2 text-slate-300 hover:text-cyan-400">Journey</a>
+    <a href="#contact" class="block py-2 text-slate-300 hover:text-cyan-400">Contact</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="home" class="hero-section flex items-center justify-center relative">
+  <div class="hero-bg"></div>
+  <div id="particles" class="absolute inset-0 pointer-events-none"></div>
+  <div class="relative z-10 text-center px-6 max-w-3xl mx-auto">
+    <div class="avatar-wrapper mx-auto mb-8 rounded-xl overflow-hidden">
+      <div class="avatar-glow rounded-xl"></div>
+      <img src="assets/zekrom.jpg" alt="zekrom pixel art" class="rounded-xl" />
+    </div>
+    <p class="pixel-font text-[0.65rem] text-cyan-400 mb-4 tracking-widest">HELLO WORLD !</p>
+    <h1 class="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent">
+      Mirza Nurrahman
+    </h1>
+    <p class="text-lg md:text-xl text-slate-400 mb-2">
+      <span id="typed-text"></span><span class="typing-cursor"></span>
+    </p>
+    <p class="text-slate-500 text-sm mt-3 max-w-md mx-auto leading-relaxed">Crafting digital experiences with clean code &amp; pixel-perfect design.</p>
+    <div class="mt-8 flex justify-center gap-4 flex-wrap">
+      <a href="#projects" class="pixel-btn">VIEW QUEST LOG</a>
+      <a href="#contact" class="pixel-btn" style="background:transparent;border:2px solid #7c3aed;">SEND MESSAGE</a>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <span class="pixel-font text-[0.5rem] text-slate-500">▼ SCROLL ▼</span>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="pixel-font text-[0.85rem] text-center text-cyan-400 mb-2 reveal">// ABOUT ME</h2>
+    <p class="text-center text-slate-500 text-sm mb-12 reveal">Player Stats &amp; Background Story</p>
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-5xl mx-auto">
+      <div class="reveal bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-8 border border-[#2a2a52] pixel-border w-full max-w-2xl mx-auto lg:max-w-none">
+        <h3 class="text-xl font-bold text-white mb-4">📜 Backstory</h3>
+        <p class="text-slate-400 leading-relaxed mb-4">Seorang Front-End Developer yang passionate dalam membangun antarmuka web modern. Berpengalaman dengan HTML, CSS, JavaScript, dan framework modern.</p>
+        <p class="text-slate-400 leading-relaxed">Terinspirasi oleh estetika retro gaming dan pixel art, saya menggabungkan kreativitas visual dengan teknologi web terkini untuk menciptakan pengalaman digital yang unik.</p>
+      </div>
+      <div class="reveal space-y-5 w-full max-w-2xl mx-auto lg:max-w-none">
+        <div class="bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-5 border border-[#2a2a52]">
+          <span class="pixel-font text-[0.55rem] text-slate-300">🎓 Pendidikan</span>
+          <p class="text-slate-400 text-sm mt-1">Universitas Indonesia — Teknik Informatika</p>
+        </div>
+        <div class="bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-5 border border-[#2a2a52]">
+          <span class="pixel-font text-[0.55rem] text-slate-300">📍 Lokasi</span>
+          <p class="text-slate-400 text-sm mt-1">Jakarta, Indonesia</p>
+        </div>
+        <div class="bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-5 border border-[#2a2a52]">
+          <span class="pixel-font text-[0.55rem] text-slate-300">⚔️ Class</span>
+          <p class="text-slate-400 text-sm mt-1">Front-End Developer &bull; UI Enthusiast</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills" class="py-24 px-6 bg-[#0d0d20]">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="pixel-font text-[0.85rem] text-center text-cyan-400 mb-2 reveal">// SKILL TREE</h2>
+    <p class="text-center text-slate-500 text-sm mb-12 reveal">Ability Points &amp; Power Levels</p>
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+      <div class="reveal bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-6 border border-[#2a2a52]">
+        <div class="flex justify-between items-center mb-2">
+          <span class="pixel-font text-[0.55rem] text-purple-400">HTML / CSS</span>
+          <span class="pixel-font text-[0.5rem] text-slate-500">LV 92</span>
+        </div>
+        <div class="stat-bar-track rounded-sm"><div class="stat-bar-fill bg-gradient-to-r from-purple-600 to-purple-400 rounded-sm" data-width="92%"></div></div>
+      </div>
+      <div class="reveal bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-6 border border-[#2a2a52]">
+        <div class="flex justify-between items-center mb-2">
+          <span class="pixel-font text-[0.55rem] text-cyan-400">JavaScript</span>
+          <span class="pixel-font text-[0.5rem] text-slate-500">LV 85</span>
+        </div>
+        <div class="stat-bar-track rounded-sm"><div class="stat-bar-fill bg-gradient-to-r from-cyan-600 to-cyan-400 rounded-sm" data-width="85%"></div></div>
+      </div>
+      <div class="reveal bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-6 border border-[#2a2a52]">
+        <div class="flex justify-between items-center mb-2">
+          <span class="pixel-font text-[0.55rem] text-pink-400">React</span>
+          <span class="pixel-font text-[0.5rem] text-slate-500">LV 78</span>
+        </div>
+        <div class="stat-bar-track rounded-sm"><div class="stat-bar-fill bg-gradient-to-r from-pink-600 to-pink-400 rounded-sm" data-width="78%"></div></div>
+      </div>
+      <div class="reveal bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-6 border border-[#2a2a52]">
+        <div class="flex justify-between items-center mb-2">
+          <span class="pixel-font text-[0.55rem] text-emerald-400">Tailwind CSS</span>
+          <span class="pixel-font text-[0.5rem] text-slate-500">LV 88</span>
+        </div>
+        <div class="stat-bar-track rounded-sm"><div class="stat-bar-fill bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-sm" data-width="88%"></div></div>
+      </div>
+      <div class="reveal bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-6 border border-[#2a2a52]">
+        <div class="flex justify-between items-center mb-2">
+          <span class="pixel-font text-[0.55rem] text-amber-400">Node.js</span>
+          <span class="pixel-font text-[0.5rem] text-slate-500">LV 72</span>
+        </div>
+        <div class="stat-bar-track rounded-sm"><div class="stat-bar-fill bg-gradient-to-r from-amber-600 to-amber-400 rounded-sm" data-width="72%"></div></div>
+      </div>
+      <div class="reveal bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-6 border border-[#2a2a52]">
+        <div class="flex justify-between items-center mb-2">
+          <span class="pixel-font text-[0.55rem] text-red-400">Git / GitHub</span>
+          <span class="pixel-font text-[0.5rem] text-slate-500">LV 80</span>
+        </div>
+        <div class="stat-bar-track rounded-sm"><div class="stat-bar-fill bg-gradient-to-r from-red-600 to-red-400 rounded-sm" data-width="80%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS (SWIPER) ===== -->
+<section id="projects" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="pixel-font text-[0.85rem] text-center text-cyan-400 mb-2 reveal">// QUEST LOG</h2>
+    <p class="text-center text-slate-500 text-sm mb-12 reveal">Completed Missions &amp; Side Quests</p>
+    <div class="swiper projects-swiper reveal">
+      <div class="swiper-wrapper pb-12">
+        <div class="swiper-slide">
+          <div class="project-card bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl border border-[#2a2a52] overflow-hidden">
+            <div class="relative h-52 overflow-hidden">
+              <img src="assets/project1.png" alt="Project 1" class="w-full h-full object-cover" />
+              <div class="project-overlay"><div><span class="pixel-font text-[0.5rem] text-cyan-400">WEB APP</span><p class="text-white text-sm mt-1">Dashboard Analytics</p></div></div>
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-white mb-2">Pixel Dashboard</h3>
+              <p class="text-slate-400 text-sm mb-3">Dashboard analytics dengan UI retro pixel art dan visualisasi data real-time.</p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="pixel-font text-[0.4rem] bg-purple-900/50 text-purple-300 px-2 py-1 rounded">React</span>
+                <span class="pixel-font text-[0.4rem] bg-cyan-900/50 text-cyan-300 px-2 py-1 rounded">Tailwind</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="project-card bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl border border-[#2a2a52] overflow-hidden">
+            <div class="relative h-52 overflow-hidden">
+              <img src="assets/project2.png" alt="Project 2" class="w-full h-full object-cover" />
+              <div class="project-overlay"><div><span class="pixel-font text-[0.5rem] text-cyan-400">MOBILE</span><p class="text-white text-sm mt-1">Chat Application</p></div></div>
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-white mb-2">RetroChat</h3>
+              <p class="text-slate-400 text-sm mb-3">Aplikasi chat real-time dengan tema pixel, emoji pixel, dan notifikasi push.</p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="pixel-font text-[0.4rem] bg-amber-900/50 text-amber-300 px-2 py-1 rounded">Node.js</span>
+                <span class="pixel-font text-[0.4rem] bg-emerald-900/50 text-emerald-300 px-2 py-1 rounded">Socket.io</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="project-card bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl border border-[#2a2a52] overflow-hidden">
+            <div class="relative h-52 overflow-hidden">
+              <img src="assets/project3.png" alt="Project 3" class="w-full h-full object-cover" />
+              <div class="project-overlay"><div><span class="pixel-font text-[0.5rem] text-cyan-400">E-COMMERCE</span><p class="text-white text-sm mt-1">Online Store</p></div></div>
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-white mb-2">PixelShop</h3>
+              <p class="text-slate-400 text-sm mb-3">E-commerce platform dengan desain retro, fitur cart dan payment gateway.</p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="pixel-font text-[0.4rem] bg-cyan-900/50 text-cyan-300 px-2 py-1 rounded">Next.js</span>
+                <span class="pixel-font text-[0.4rem] bg-red-900/50 text-red-300 px-2 py-1 rounded">Stripe</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="project-card bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl border border-[#2a2a52] overflow-hidden">
+            <div class="relative h-52 overflow-hidden">
+              <img src="assets/project4.png" alt="Project 4" class="w-full h-full object-cover" />
+              <div class="project-overlay"><div><span class="pixel-font text-[0.5rem] text-cyan-400">BLOG</span><p class="text-white text-sm mt-1">Content Platform</p></div></div>
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-white mb-2">PixelBlog</h3>
+              <p class="text-slate-400 text-sm mb-3">Platform blog dengan markdown editor dan pixel art illustrations.</p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="pixel-font text-[0.4rem] bg-purple-900/50 text-purple-300 px-2 py-1 rounded">Gatsby</span>
+                <span class="pixel-font text-[0.4rem] bg-pink-900/50 text-pink-300 px-2 py-1 rounded">GraphQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination mt-6"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JOURNEY ===== -->
+<section id="journey" class="py-24 px-6 bg-[#0d0d20]">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="pixel-font text-[0.85rem] text-center text-cyan-400 mb-2 reveal">// JOURNEY</h2>
+    <p class="text-center text-slate-500 text-sm mb-16 reveal">Adventure Log &amp; Milestones</p>
+    <div class="relative">
+      <div class="timeline-line hidden md:block"></div>
+      <div class="space-y-12">
+        <!-- Timeline Item 1 (Left) -->
+        <div class="reveal relative flex flex-col md:flex-row items-center w-full">
+          <div class="timeline-dot hidden md:block" style="top:20px;"></div>
+          <div class="w-full md:w-1/2 md:pr-12 flex justify-center md:justify-end">
+            <div class="bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-6 border border-[#2a2a52] w-full max-w-md text-center md:text-right">
+              <span class="pixel-font text-[0.5rem] text-emerald-400">2024 — PRESENT</span>
+              <h3 class="font-bold text-white mt-2 mb-1">Front-End Developer</h3>
+              <p class="text-slate-400 text-sm">PT. Digital Nusantara — Membangun UI untuk produk SaaS dengan React dan TypeScript.</p>
+            </div>
+          </div>
+          <div class="hidden md:block md:w-1/2"></div>
+        </div>
+        
+        <!-- Timeline Item 2 (Right) -->
+        <div class="reveal relative flex flex-col md:flex-row items-center w-full">
+          <div class="timeline-dot hidden md:block" style="top:20px;"></div>
+          <div class="hidden md:block md:w-1/2"></div>
+          <div class="w-full md:w-1/2 md:pl-12 flex justify-center md:justify-start">
+            <div class="bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-6 border border-[#2a2a52] w-full max-w-md text-center md:text-left">
+              <span class="pixel-font text-[0.5rem] text-amber-400">2023</span>
+              <h3 class="font-bold text-white mt-2 mb-1">Web Dev Intern</h3>
+              <p class="text-slate-400 text-sm">Startup XYZ — Belajar full-stack development dan membangun fitur baru.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Timeline Item 3 (Left) -->
+        <div class="reveal relative flex flex-col md:flex-row items-center w-full">
+          <div class="timeline-dot hidden md:block" style="top:20px;"></div>
+          <div class="w-full md:w-1/2 md:pr-12 flex justify-center md:justify-end">
+            <div class="bg-[#161638] shadow-lg shadow-purple-950/30 rounded-xl p-6 border border-[#2a2a52] w-full max-w-md text-center md:text-right">
+              <span class="pixel-font text-[0.5rem] text-purple-400">2022</span>
+              <h3 class="font-bold text-white mt-2 mb-1">Mulai Belajar Coding</h3>
+              <p class="text-slate-400 text-sm">Memulai perjalanan di dunia programming, fokus web development dan pixel art.</p>
+            </div>
+          </div>
+          <div class="hidden md:block md:w-1/2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="py-24 px-6">
+  <div class="max-w-2xl mx-auto text-center">
+    <h2 class="pixel-font text-[0.85rem] text-cyan-400 mb-2 reveal">// CONTACT</h2>
+    <p class="text-slate-500 text-sm mb-12 reveal">Send a Pigeon &amp; Let's Connect</p>
+    <form id="contact-form" class="reveal space-y-5 text-left max-w-md mx-auto w-full">
+      <div>
+        <label class="pixel-font text-[0.5rem] text-slate-400 block mb-2">YOUR NAME</label>
+        <input type="text" required placeholder="Enter your name..." class="w-full bg-[#161638] shadow-lg shadow-purple-950/30 border border-[#2a2a52] rounded-lg px-4 py-3 text-slate-200 text-sm focus:outline-none focus:border-cyan-500 transition" />
+      </div>
+      <div>
+        <label class="pixel-font text-[0.5rem] text-slate-400 block mb-2">YOUR EMAIL</label>
+        <input type="email" required placeholder="Enter your email..." class="w-full bg-[#161638] shadow-lg shadow-purple-950/30 border border-[#2a2a52] rounded-lg px-4 py-3 text-slate-200 text-sm focus:outline-none focus:border-cyan-500 transition" />
+      </div>
+      <div>
+        <label class="pixel-font text-[0.5rem] text-slate-400 block mb-2">MESSAGE</label>
+        <textarea rows="5" required placeholder="Write your message..." class="w-full bg-[#161638] shadow-lg shadow-purple-950/30 border border-[#2a2a52] rounded-lg px-4 py-3 text-slate-200 text-sm focus:outline-none focus:border-cyan-500 transition resize-none"></textarea>
+      </div>
+      <div class="text-center pt-2">
+        <button type="submit" class="pixel-btn">SEND MESSAGE ✉</button>
+      </div>
+    </form>
+    <div class="reveal mt-12 flex justify-center gap-6">
+      <a href="#" class="text-slate-500 hover:text-cyan-400 transition text-sm">GitHub</a>
+      <a href="#" class="text-slate-500 hover:text-cyan-400 transition text-sm">LinkedIn</a>
+      <a href="#" class="text-slate-500 hover:text-cyan-400 transition text-sm">Instagram</a>
+      <a href="#" class="text-slate-500 hover:text-cyan-400 transition text-sm">Twitter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="py-8 px-6 border-t border-[#2a2a52] text-center">
+  <p class="pixel-font text-[0.45rem] text-slate-600">&copy; 2026 Mirza Nurrahman &bull; Built with ♥ &amp; Pixels</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
